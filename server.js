@@ -17,7 +17,7 @@ var port = process.env.PORT || 8080;        // set our port
 // =============================================================================
 const db = require("./app/models");
 db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
+  console.log("DB dropped and resynced");
 });
 
 // ROUTES FOR OUR API
@@ -44,6 +44,9 @@ app.use('/api', router);
 
 const articleRoutes = require('./app/routes/article.routes');
 app.use('/api/article/', articleRoutes);
+
+const arxivRoutes = require('./app/routes/arxiv.routes');
+app.use('/api/arxiv/', arxivRoutes);
 
 // START THE SERVER
 // =============================================================================
