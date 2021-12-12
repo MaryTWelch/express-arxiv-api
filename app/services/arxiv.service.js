@@ -17,7 +17,7 @@ exports.getArxivData = async function(){
             },
           ],
           start: 0,
-          maxResults: 20,
+          maxResults: 1000,
     });
 
     return papers;

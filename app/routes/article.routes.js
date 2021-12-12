@@ -7,4 +7,6 @@ router.get('/getAll', ArticleController.getAll);
 //Commenting out route so that data is only created directly from the arxiv API
 //router.post('/', ArticleController.create);
 
+router.post('/searchByAuthor', ArticleController.searchByAuthor);
+
 module.exports = router;

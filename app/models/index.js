@@ -1,12 +1,12 @@
 const dbConfig = require("../config/db.config.js");
 
-const Sequelize = require("sequelize");
+const { Sequelize, QueryTypes} = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
   operatorsAliases: 0,
 
-  logging: false,
+  logging: true,
 
   pool: {
     max: dbConfig.pool.max,
@@ -20,6 +20,8 @@ const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+
+db.QueryTypes = QueryTypes;
 
 db.Articles = require("./article.model.js")(sequelize, Sequelize);
 db.Authors = require("./author.model.js")(sequelize, Sequelize);

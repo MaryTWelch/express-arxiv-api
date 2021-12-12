@@ -19,12 +19,12 @@ exports.create = async function (req, res, next) {
 }
 
 // Get the authors for a given Article
-exports.findAuthorsByArticleId = (articleId) => {
-    return Article.findByPk(articleId, { include: ["authors"]})
-        .then((article) => {
-            return article;
-        })
-        .catch((err) => {
-            console.log("Error while finding article: ", err);
-        })
-}
+// exports.findAuthorsByArticleId = (articleId) => {
+//     return Article.findByPk(articleId, { include: ["authors"]})
+//         .then((article) => {
+//             return article;
+//         })
+//         .catch((err) => {
+//             console.log("Error while finding article: ", err);
+//         })
+// }
