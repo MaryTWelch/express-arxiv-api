@@ -29,4 +29,17 @@ exports.create = async function (article) {
 
 };
 
+exports.getAll = () => {
+  return Article.findAll(
+    //{
+    //include: ["authors"]
+  //}
+  ).then((articles) => {
+    return articles;
+  }).catch(err => {
+    console.error(err);
+  });
+};
+
+
 

@@ -1,6 +1,8 @@
 const db = require("../models");
-const Article = db.articles;
+const Article = db.Articles;
+const Author = db.Authors;
 const Op = db.Sequelize.Op;
+var ArticleService = require('../services/article.service');
 
 exports.create = async function (req, res, next) {
     // Create an Article
@@ -14,7 +16,7 @@ exports.create = async function (req, res, next) {
     // Save Article in the database
     Article.create(article)
     .then(data => {
-      return res.status(200).json({ status: 200, data: article, message: "Article created successfully" });
+      return res.status(200).json({ status: 200, data: data, message: "Article created successfully" });
     })
     .catch(err => {
       res.status(500).send({
@@ -25,14 +27,11 @@ exports.create = async function (req, res, next) {
 
 }
 
+// Get all Articles include Authors
 exports.getAll = async function (req, res, next) {
-  // Validate request parameters, queries using express-validator
-  
-  var page = req.params.page ? req.params.page : 1;
-  var limit = req.params.limit ? req.params.limit : 10;
   try {
-      var users = await UserService.getUsers({}, page, limit)
-      return res.status(200).json({ status: 200, data: users, message: "Succesfully Retrieved Articles" });
+      const Articles = await ArticleService.getAll();
+      return res.status(200).json({ status: 200, data: Articles, message: "Succesfully Retrieved Articles" });
   } catch (e) {
       return res.status(400).json({ status: 400, message: e.message });
   }

@@ -6,7 +6,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   dialect: dbConfig.dialect,
   operatorsAliases: 0,
 
-  logging: false,
+  logging: true,
 
   pool: {
     max: dbConfig.pool.max,
@@ -21,13 +21,12 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.articles = require("./article.model.js")(sequelize, Sequelize);
-//db.authors = require("./author.model.js")(sequelize, Sequelize);
+db.Articles = require("./article.model.js")(sequelize, Sequelize);
+db.Authors = require("./author.model.js")(sequelize, Sequelize);
 
-// db.articles.hasMany(db.authors, { as: "authors"});
-// db.authors.belongsTo(db.articles, {
-//     foreignKey: 'articleId',
-//     as: 'article'
-// });
+db.Articles.hasMany(db.Authors, { as: "Authors"});
+db.Authors.belongsTo(db.Articles, {
+    as: 'Article'
+});
 
 module.exports = db;

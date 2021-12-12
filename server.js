@@ -48,6 +48,9 @@ app.use('/api/article/', articleRoutes);
 const arxivRoutes = require('./app/routes/arxiv.routes');
 app.use('/api/arxiv/', arxivRoutes);
 
+const authorRoutes = require('./app/routes/author.routes');
+app.use('/api/author/', authorRoutes);
+
 // START THE SERVER
 // =============================================================================
 app.listen(port);

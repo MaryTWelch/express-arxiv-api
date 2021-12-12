@@ -4,7 +4,7 @@
  * These columns will be generated automatically: id, arxiv_id, title, updated, published, createdAt, updatedAt.
  */
 module.exports = (sequelize, Sequelize) => {
-    const Article = sequelize.define("article", {
+    const Article = sequelize.define("Article", {
       arxiv_id: {
         type: Sequelize.STRING,
         allowNull: false
