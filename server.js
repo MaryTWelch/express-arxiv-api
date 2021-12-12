@@ -4,6 +4,8 @@
 // call the packages we need
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
+var port = process.env.PORT || 8080;        // set our port
+
 var bodyParser = require('body-parser');
 const cors     = require('cors');
 
@@ -13,8 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(cors());
-
-var port = process.env.PORT || 8080;        // set our port
 
 // DATABASE SETUP
 // =============================================================================
