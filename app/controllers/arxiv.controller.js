@@ -21,7 +21,7 @@ exports.syncAllData = async function (req, res) {
         })
         .then(authorData => {
             logAuthorData = authorData.sort((a, b) => (a.name > b.name) ? 1 : -1);
-            return res.status(200).json({ status: 200, message: "Succesfully Synced Arxiv data", articles: logArticleData, authors: logAuthorData});;
+            return res.status(200).json({ status: 200, message: "Successfully Synced Arxiv data", articles: logArticleData, authors: logAuthorData});;
         })
         .catch((e) => {
             console.error('Create article/author data error: ' + e);

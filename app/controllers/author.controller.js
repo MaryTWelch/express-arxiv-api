@@ -9,7 +9,7 @@ exports.create = async function (req, res, next) {
     const articleId = req.body.articleId;
     return AuthorService.createAuthor(author, articleId)
         .then((author) => {
-            return res.status(200).json({ status: 200, message: "Succesfully Created Author", author: author});;
+            return res.status(200).json({ status: 200, message: "Successfully Created Author", author: author});;
         })
         .catch((err) => {
             console.log(">> Error while creating author: ", err);
