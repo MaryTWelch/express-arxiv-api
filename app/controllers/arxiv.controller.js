@@ -42,25 +42,28 @@ const createArticles = async () => {
     return Promise.all(arxivArticles.map(article => createArticle(article)));
 };
 
-const createAuthor = async (articleId, author) => {
-    //debugger;
-    const createAuthorResult = await AuthorService.createAuthor(articleId, author).catch(err => {console.error('Author create error: ' + err)});
+const createAuthor = async (authorName, articleId) => {
+    const author = {
+        name: authorName
+    };
+
+    const createAuthorResult = await AuthorService.createAuthor(author, articleId).catch(err => {console.error('Author create error: ' + err)});
     return createAuthorResult;
 }
 
 const createArticleAuthors = async (articleId, authors) => {
-    debugger;
     return Promise.all(authors.map(author => {
-        //debugger;
-        createAuthor(articleId, author[0]);
+        const authorResult = createAuthor(author[0], articleId);
+        return authorResult;
     }));
 };
 
 const createAllArticleAuthors = async (articleData) => {
-    return Promise.all(
-        articleData.map(article => createArticleAuthors(
+    return Promise.all(articleData.map(article => {
+        const articleAuthorCreate = createArticleAuthors(
             article.id, 
             arxivArticles.find( ({ id }) => id === article.arxiv_id ).authors
-        ))
-    );
+        );
+        return articleAuthorCreate;
+    }));
 }

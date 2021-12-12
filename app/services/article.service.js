@@ -1,5 +1,5 @@
 const db = require("../models");
-const Article = db.articles;
+const Article = db.Articles;
 const Op = db.Sequelize.Op;
 const sequelize = db.sequelize;
 
