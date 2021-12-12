@@ -7,7 +7,6 @@ var AuthorService = require('../services/author.service');
 exports.create = async function (req, res, next) {
     const author = req.body.author;
     const articleId = req.body.articleId;
-    debugger;
     return AuthorService.createAuthor(author, articleId)
         .then((author) => {
             return res.status(200).json({ status: 200, message: "Succesfully Created Author", author: author});;

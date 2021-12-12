@@ -30,8 +30,11 @@ exports.create = async function (req, res, next) {
 // Get all Articles include Authors
 exports.getAll = async function (req, res, next) {
   try {
-      const Articles = await ArticleService.getAll();
-      return res.status(200).json({ status: 200, data: Articles, message: "Succesfully Retrieved Articles" });
+    const articles = await Article.findAll({
+      include: [{ model: Author, as: 'Authors' }]
+    })
+
+    return res.status(200).json({ status: 200, articles: articles, message: "Succesfully Retrieved Articles" });
   } catch (e) {
       return res.status(400).json({ status: 400, message: e.message });
   }
