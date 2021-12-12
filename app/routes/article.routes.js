@@ -4,6 +4,7 @@ var router = express.Router();
 var ArticleController = require('../controllers/article.controller');
 
 router.get('/getAll', ArticleController.getAll);
-router.post('/', ArticleController.create);
+//Commenting out route so that data is only created directly from the arxiv API
+//router.post('/', ArticleController.create);
 
 module.exports = router;

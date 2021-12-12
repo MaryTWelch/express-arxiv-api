@@ -4,10 +4,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       }
-      // ,
-      // articleId: {
-      //   type: DataTypes.STRING
-      // }
     });
   
     return Author;
